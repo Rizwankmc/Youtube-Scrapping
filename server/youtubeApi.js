@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 
 const youtube = google.youtube({
   version: 'v3',
-  auth: 'AIzaSyD653KLZm_0cyM5L6Almqmuh3uHHEuEq9w',
+  auth: process.env.YOUTUBE_API_KEY,
 });
 
 export const fetchVideList = async () => {
@@ -18,13 +18,6 @@ export const fetchVideList = async () => {
   } else {
     return false;
   }
-  // .then((response) => {
-  //   console.log('Res[onse =>', response);
-  //   return response.data.items;
-  // })
-  // .catch((err) => {
-  //   console.log('Error in Fetch =>', err);
-  // });
 };
 
 export const fetchChannelDetail = async (id) => {

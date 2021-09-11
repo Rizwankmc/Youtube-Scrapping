@@ -17,7 +17,6 @@ const ListingDetail = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const videoId = urlParams.get('v');
-    console.log('Vie', videoId);
     if (videoId) {
       fetchDetails(videoId);
     }

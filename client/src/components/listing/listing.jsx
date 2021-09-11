@@ -12,7 +12,6 @@ const Listing = () => {
     const res = await userInstance.get('/listing');
     setLoading(false);
     if (res.data.code === 200) {
-      console.log('Listing =>', res.data.list);
       setList(res.data.list);
     }
   };
@@ -26,7 +25,6 @@ const Listing = () => {
     const res = await userInstance.get('/updatedListing');
     setLoading(false);
     if (res.data.code === 200) {
-      console.log('Listing =>', res.data.list);
       setList(res.data.list);
     }
   };

@@ -4,16 +4,10 @@ import { fetchChannelDetail, fetchVideList } from '../youtubeApi.js';
 
 export const fetchUpdatedList = async (req, res) => {
   try {
-    // const browser = await puppeteer.launch();
-    // let results = await scrape_info(browser);
-    // console.dir(results, {depth: null, colors: true});
-    // await browser.close();
     let isSuccess = false;
     const list = await fetchVideList();
-    console.log('List =>', list);
     for (let item of list) {
       const channelDetails = await fetchChannelDetail(item.snippet.channelId);
-      console.log('Chanel =>', channelDetails);
       const {
         snippet: {
           publishedAt,
@@ -54,7 +48,6 @@ export const fetchUpdatedList = async (req, res) => {
           channelId: id,
           country,
         });
-      console.log('Channle    =======>', channel);
       if (channel) {
         let video;
         const isVideo = await TrendingVideo.findOne({ videoId: item.id });
