@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import image1 from '../../assests/images/image1.jpg';
+import { Button, Spinner } from 'react-bootstrap';
 import { userInstance } from '../../axios/axios';
 import './listing.css';
 
@@ -25,6 +24,7 @@ const Listing = () => {
   const handleNewUpdate = async () => {
     setLoading(true);
     const res = await userInstance.get('/updatedListing');
+    setLoading(false);
     if (res.data.code === 200) {
       console.log('Listing =>', res.data.list);
       setList(res.data.list);
@@ -79,39 +79,45 @@ const Listing = () => {
         <div className='col-md-12'>
           <div className='listing-page'>
             <h4 className='mb-5'>Trending List </h4>
-            <Button onClick={handleNewUpdate}>Update List</Button>
-            <div className='list-view-section'>
-              {list && list.length !== 0 ? (
-                list.map((item, i) => (
-                  <div
-                    className='listing-box-list-view'
-                    key={item._id}
-                    onClick={() => handleVideoDetails(item.videoId)}
-                  >
-                    <div className='listing-img'>
-                      <img src={item.thumbnails[2].url} alt='image1' />
-                    </div>
-                    <div className='listing-content'>
-                      <h6>{item.title}</h6>
-                      <p>
-                        <span>{item.channel && item.channel.title}</span> .{' '}
-                        <span>
-                          {numFormatter(item.statistics.viewCount)} Views
-                        </span>{' '}
-                        <span>{timeSince(new Date(item.publishedAt))}</span>
-                      </p>
-                      <p>
-                        {item.description.length > 180
-                          ? item.description.substring(0, 180) + '...'
-                          : item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div>No records</div>
-              )}
+            <div className='update-btn'>
+              <Button onClick={handleNewUpdate}>Update List</Button>
             </div>
+            {loading ? (
+              <Spinner animation='border' />
+            ) : (
+              <div className='list-view-section'>
+                {list && list.length !== 0 ? (
+                  list.map((item, i) => (
+                    <div
+                      className='listing-box-list-view'
+                      key={item._id}
+                      onClick={() => handleVideoDetails(item.videoId)}
+                    >
+                      <div className='listing-img'>
+                        <img src={item.thumbnails[2].url} alt='image1' />
+                      </div>
+                      <div className='listing-content'>
+                        <h6>{item.title}</h6>
+                        <p>
+                          <span>{item.channel && item.channel.title}</span> .{' '}
+                          <span>
+                            {numFormatter(item.statistics.viewCount)} Views
+                          </span>{' '}
+                          <span>{timeSince(new Date(item.publishedAt))}</span>
+                        </p>
+                        <p>
+                          {item.description.length > 180
+                            ? item.description.substring(0, 180) + '...'
+                            : item.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div>No records</div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

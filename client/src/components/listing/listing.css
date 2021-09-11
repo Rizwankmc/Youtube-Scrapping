@@ -42,7 +42,7 @@
 .listing-box-list-view img {
     height: 150px;
     width: 250px;
-    object-fit: contain;
+    object-fit: cover;
     margin-right: 15px;
 }
 .listing-box-list-view p {
@@ -117,4 +117,62 @@ font-size: 14px;
     font-size: 14px;
     font-weight: 400;
     margin-top: 21px;
+}
+.video-section > div {
+    width: 100% !important;
+}
+.listing-detail-page {
+    margin-top: 50px;
+}
+.video-section h4 {
+    margin-top: 15px;
+}
+.bottomtext {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+.like-section span {
+    padding-left: 25px;
+}
+
+.channel-section {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.channel-section .channel-name {
+    margin-left: 12px;
+}
+
+
+
+.channel-section img {
+    height: 35px;
+    width: 35px;
+}
+
+.channel-name h6 {
+    margin-bottom: -2px;
+}
+
+.channel-name p {
+    margin-top: 15px;
+}
+.channel-section{
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+}
+.update-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+.listing-page{
+    margin-top: 50px;
+}
+.listing-page h4{
+    font-size:30px;
 }

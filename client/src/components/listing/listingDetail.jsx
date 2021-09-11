@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { NavItem } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
-import image1 from '../../assests/images/image1.jpg';
 import { userInstance } from '../../axios/axios';
 import './listing.css';
 
 const ListingDetail = () => {
   const [videoDetails, setVideoDetails] = useState();
-  const [loading, setLoading] = useState(false);
   const [list, setList] = useState([]);
 
   const fetchDetails = async (videoId) => {
-    setLoading(true);
     const res = await userInstance.post('/getVideoDetails', { videoId });
-    setLoading(false);
     if (res.data.code === 200) {
       setVideoDetails(res.data.videoDetails);
       setList(res.data.lists);
@@ -92,35 +87,39 @@ const ListingDetail = () => {
                         new Date(videoDetails && videoDetails.publishedAt)
                       )}
                     </p>
-                    <span>
-                      {numFormatter(
-                        videoDetails && videoDetails.statistics.likeCount
-                      )}{' '}
-                      likes
-                    </span>
-                    <span>
-                      {numFormatter(
-                        videoDetails && videoDetails.statistics.dislikeCount
-                      )}{' '}
-                      dislikes
-                    </span>
+                    <div className='like-section'>
+                      <span>
+                        {numFormatter(
+                          videoDetails && videoDetails.statistics.likeCount
+                        )}{' '}
+                        likes
+                      </span>
+                      <span>
+                        {numFormatter(
+                          videoDetails && videoDetails.statistics.dislikeCount
+                        )}{' '}
+                        dislikes
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div>
+                <div className='channel-section'>
                   <img
                     src={videoDetails && videoDetails.channel.thumbnails[2].url}
                     height='50'
                     width='50'
                     alt='channel-thumbnail'
                   />
-                  <h6>{videoDetails && videoDetails.channel.title}</h6>
-                  <span>
-                    {numFormatter(
-                      videoDetails &&
-                        videoDetails.channel.statistics.subscriberCount
-                    )}
-                  </span>
-                  <p>{videoDetails && videoDetails.description}</p>
+                  <div className='channel-name'>
+                    <h6>{videoDetails && videoDetails.channel.title}</h6>
+                    <span>
+                      {numFormatter(
+                        videoDetails &&
+                          videoDetails.channel.statistics.subscriberCount
+                      )}
+                    </span>
+                    <p>{videoDetails && videoDetails.description}</p>
+                  </div>
                 </div>
               </div>
               <div className='right-section'>
