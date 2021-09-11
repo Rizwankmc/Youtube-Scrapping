@@ -4,11 +4,11 @@
         "client": "http://localhost:3000/"
     },
     "staging": {
-        "server": "https://staging.zamanatv.com",
-        "client": "https://staging.zamanatv.com/"
+        "server": "http://13.234.186.135:3001",
+        "client": "http://13.234.186.135:3000/"
     },
     "production": {
-        "server": "https://zamanatv.com",
-        "client": "https://zamanatv.com/"
+        "server": "http://13.234.186.135:3001",
+        "client": "http://13.234.186.135:3000/"
     }
 }
