@@ -1,0 +1,14 @@
+{
+    "development": {
+        "server": "http://localhost:3001",
+        "client": "http://localhost:3000/"
+    },
+    "staging": {
+        "server": "https://staging.zamanatv.com",
+        "client": "https://staging.zamanatv.com/"
+    },
+    "production": {
+        "server": "https://zamanatv.com",
+        "client": "https://zamanatv.com/"
+    }
+}
