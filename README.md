@@ -26,6 +26,7 @@ and client will run on port 3000
 
 after Project run go to link -
     http://localhost:3000 
+Demo url - http://13.234.186.135:3000/
     
 
 
