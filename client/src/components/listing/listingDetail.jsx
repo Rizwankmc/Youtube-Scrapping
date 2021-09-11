@@ -74,7 +74,10 @@ const ListingDetail = () => {
             <div className='detail-page-section'>
               <div className='left-section'>
                 <div className='video-section'>
-                  <ReactPlayer url={videoDetails && videoDetails.link} />
+                  <ReactPlayer
+                    url={videoDetails && videoDetails.link}
+                    controls
+                  />
                   {/* <h5>#1 ON TRENDING FOR MUSIC</h5> */}
                   <h4>{videoDetails && videoDetails.title}</h4>
                   <div className='bottomtext'>
@@ -117,6 +120,8 @@ const ListingDetail = () => {
                         videoDetails &&
                           videoDetails.channel.statistics.subscriberCount
                       )}
+                      {'  '}
+                      <small> &nbsp;subscribers</small>
                     </span>
                     <p>{videoDetails && videoDetails.description}</p>
                   </div>
